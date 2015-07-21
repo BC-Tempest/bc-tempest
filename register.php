@@ -8,15 +8,15 @@ if(isset($_POST["submit"])) {
 	$query = mysqli_query($connect, "select * from users where username='$username'");
 	$num = mysqli_num_rows($query);
 	if ($num == 0) {
-		mysqli_query($connect, "insert into users values (null, '$username', '$password', '$email', '$dname')");
+		mysqli_query($connect, "insert into users values (null, '$username', '$name', null, '$password', '$email', 1, null)");
 	}
 }
 ?>
 
 <form method="post" action="login.php">
 	<input type="text" name="username" placeholder="username" required>
+		<input type="text" name="name" placeholder="Display Name">
 	<input type="text" name="password" placeholder="password" required>
 	<input type="email" name="email" placeholder="email" required>
-	<input type="text" name="dname" placeholder="Display Name">
 	<button type="submit" name="submit"> Submit </button>
 </form>
